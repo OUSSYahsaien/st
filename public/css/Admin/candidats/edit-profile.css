@@ -1,0 +1,1039 @@
+* {
+    outline: none;
+}
+
+
+.nav-bar {
+    position: fixed;
+    background-color: #fff;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    height: 56px;
+    width: 100%;
+    margin-top: -75px;
+}
+
+
+.nav-items {
+    display: flex;
+    gap: 1rem;
+    max-width: 800px;
+}
+
+.item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.item:hover {
+    color: #0d6efd;
+}
+
+.item.active {
+    color: #0d6efd;
+    border-bottom: 2px solid #0d6efd;
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 0.5rem;
+        height: auto; /* Ajuste la hauteur pour s'adapter au contenu */
+    }
+
+    .nav-items {
+        flex-wrap: wrap; /* Les éléments passent sur plusieurs lignes si nécessaire */
+        justify-content: center; /* Centre les éléments */
+        gap: 0.5rem; /* Réduit l'espacement entre les boutons */
+    }
+
+    .item {
+        padding: 0.5rem 0.8rem; /* Réduit la taille du padding pour économiser de l'espace */
+        font-size: 0.9rem; /* Diminue légèrement la taille de la police */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-bar {
+        padding: 0.5rem;
+        height: auto;
+    }
+
+    .nav-items {
+        flex-direction: column; /* Les boutons sont empilés verticalement */
+        align-items: stretch; /* Les boutons prennent toute la largeur */
+        gap: 0.5rem; /* Réduit l'espace entre les boutons */
+    }
+
+    .item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem; /* Réduit davantage la taille de la police */
+        text-align: center; /* Centre le texte */
+        border-bottom: none; /* Supprime la bordure sous l'élément actif pour éviter les chevauchements */
+    }
+
+    .item.active {
+        color: #0d6efd;
+        background-color: #f1f3f5; /* Ajoute un fond pour distinguer l'élément actif */
+        border-radius: 4px;
+    }
+
+    .profile-content {
+        margin-top: 102px;
+        margin-left: 15px;
+        width: 100%;
+    }
+}
+
+
+
+
+
+.profile-content {
+    margin-top: 12px;
+    margin-left: 15px;
+    width: 100%;
+}
+
+.content-section {
+    display: none;
+    
+}
+
+.content-section.active {
+    display: block;
+}
+
+.text-18 {
+    font-size: 18px;
+}
+
+.text-15 {
+    font-size: 15px;
+}
+
+.text-14 {
+    font-size: 14px;
+}
+
+.text-12 {
+    font-size: 12px;
+}
+
+.w-100 {
+    width: 100%;
+}
+.mt-6 {
+    margin-top: 6px;
+}
+.mt-18 {
+    margin-top: 18px;
+}
+.subtitle {
+    color: #515B6F;
+}
+
+
+
+
+
+
+
+.profile-picture-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.profile-infos {
+    max-width: 300px;
+}
+
+.profile-infos h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-infos p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.profile-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 96px;
+}
+
+.current-picture {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+.current-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-area {
+    border: 2px dashed #6c63ff;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    max-width: 350px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c63ff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.upload-label img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.upload-label span {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-label p {
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.upload-input {
+    display: none;
+    cursor: pointer;
+}
+
+
+/* Media Query pour les écrans <= 1170px */
+@media screen and (max-width: 900px) {
+    .profile-picture-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .profile-upload {
+        margin-left: 0;
+    }
+
+    .upload-area {
+        max-width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .current-picture {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-infos {
+        max-width: 100%;
+    }
+
+    .profile-infos p {
+        font-size: 0.8rem;
+    }
+
+    .upload-label {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+.unique-form-container {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.unique-form-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#unique-personal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.unique-form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.unique-form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.unique-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.unique-label span {
+    color: #ff6b6b;
+}
+
+input,
+select {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 4px rgba(108, 99, 255, 0.2);
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(32%) sepia(54%) saturate(723%) hue-rotate(226deg) brightness(95%) contrast(86%);
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+    .unique-form-container {
+        padding: 15px;
+    }
+
+    .unique-form-title {
+        font-size: 1rem;
+    }
+
+    .unique-form-row {
+        flex-direction: column; /* Les champs s'affichent en colonne */
+        gap: 1rem;
+    }
+
+    .unique-form-group {
+        width: 100%; /* S'assurer que chaque champ occupe toute la largeur */
+    }
+
+    input,
+    select {
+        font-size: 0.95rem; /* Réduire légèrement la taille des champs */
+        padding: 0.4rem; /* Réduire les marges internes pour un meilleur rendu */
+    }
+}
+
+/* Styles pour les écrans très petits (téléphones, <480px) */
+@media (max-width: 480px) {
+    .unique-form-container {
+        padding: 10px;
+    }
+
+    .unique-form-title {
+        font-size: 0.8rem;
+    }
+
+    input,
+    select {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+    }
+}
+
+
+
+/* Container principal */
+.job-search-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+}
+
+/* Titre et description */
+.job-search-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.job-search-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Options */
+.job-search-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-search-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.job-search-option input[type="radio"] {
+    accent-color: #6c63ff; /* Couleur personnalisée pour les boutons radio */
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+}
+
+.job-search-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-search-option-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.job-search-option-description {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Styles spécifiques pour les petits écrans */
+@media (max-width: 768px) {
+    /* Ajuster les marges pour économiser de l'espace */
+    .job-search-container {
+        margin: 10px;
+    }
+
+    /* Réduire les tailles des textes */
+    .job-search-title {
+        font-size: 1rem;
+    }
+
+    .job-search-description {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    /* Espacement plus compact entre les options */
+    .job-search-options {
+        gap: 10px;
+    }
+
+    /* Réduire la taille des titres et descriptions des options */
+    .job-search-option-title {
+        font-size: 0.9rem;
+    }
+
+    .job-search-option-description {
+        font-size: 0.75rem;
+    }
+
+    /* Boutons radio plus petits */
+    .job-search-option input[type="radio"] {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 0.5rem;
+        height: auto; /* Ajuste la hauteur pour s'adapter au contenu */
+    }
+
+    .nav-items {
+        flex-wrap: wrap; /* Les éléments passent sur plusieurs lignes si nécessaire */
+        justify-content: center; /* Centre les éléments */
+        gap: 0.5rem; /* Réduit l'espacement entre les boutons */
+    }
+
+    .item {
+        padding: 0.5rem 0.8rem; /* Réduit la taille du padding pour économiser de l'espace */
+        font-size: 0.9rem; /* Diminue légèrement la taille de la police */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-bar {
+        padding: 0.5rem;
+        height: auto;
+    }
+
+    .nav-items {
+        flex-direction: column; /* Les boutons sont empilés verticalement */
+        align-items: stretch; /* Les boutons prennent toute la largeur */
+        gap: 0.5rem; /* Réduit l'espace entre les boutons */
+    }
+
+    .item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem; /* Réduit davantage la taille de la police */
+        text-align: center; /* Centre le texte */
+        border-bottom: none; /* Supprime la bordure sous l'élément actif pour éviter les chevauchements */
+    }
+
+    .item.active {
+        color: #0d6efd;
+        background-color: #f1f3f5; /* Ajoute un fond pour distinguer l'élément actif */
+        border-radius: 4px;
+    }
+
+    .profile-content {
+        margin-top: 126px;
+        margin-left: 15px;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+/* Style pour la zone d'upload du CV */
+.cv-upload {
+    margin-top: 20px;
+}
+
+.cv-upload-box {
+    display: inline-block;
+    padding: 20px;
+    border: 2px dashed #6c63ff;
+    color: #6c63ff;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.cv-input {
+    display: none;
+}
+
+/* Style pour le fichier téléchargé */
+.uploaded-file {
+    margin-top: 10px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.file-name {
+    font-size: 1rem;
+    color: #333;
+}
+
+.remove-file {
+    font-size: 0.9rem;
+    color: #d9534f;
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.remove-file:hover {
+    text-decoration: underline;
+}
+
+/* Adaptation pour les petits écrans */
+@media (max-width: 768px) {
+    .cv-upload-box {
+        max-width: 100%;
+    }
+}
+
+
+#pdf-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+#pdf-preview-container canvas {
+    width: 100%; /* Le canvas prend la largeur complète de son conteneur */
+    height: auto; /* Conserve les proportions */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Adaptation pour les petits écrans */
+@media (min-width: 900px) {
+    #pdf-preview-container {
+        width: 800px;
+    }
+}
+
+
+
+.refresh-email-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.refrech-email-infos {
+    max-width: 300px;
+}
+
+.refrech-email-infos h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.refrech-email-infos p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.refresh-fields {
+    flex: 1;
+    max-width: 500px;
+}
+
+.current-email {
+    margin-bottom: 1rem;
+}
+
+.email-address {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.verified-icon {
+    color: #28a745;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.verification-status {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.2rem;
+}
+
+.update-email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.email-input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 4px rgba(108, 99, 255, 0.5);
+}
+
+.update-button {
+    padding: 0.5rem 1rem;
+    width: fit-content !important;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #6c63ff;
+    border: none;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background-color: #5a52d4;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+    .refresh-email-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .refresh-fields {
+        max-width: 100%;
+    }
+
+    .email-input {
+        width: 100%;
+    }
+
+    .update-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Media Query pour écrans très petits (moins de 480px) */
+@media (max-width: 480px) {
+    .refrech-email-infos h3 {
+        font-size: 1rem; /* Réduction du titre */
+    }
+
+    .refrech-email-infos p {
+        font-size: 0.8rem; /* Texte sous-titre réduit */
+    }
+
+    .email-address {
+        font-size: 0.9rem; /* Réduction de l'e-mail */
+    }
+
+    .verification-status {
+        font-size: 0.75rem; /* Réduction du texte du statut */
+    }
+
+    .email-input {
+        font-size: 0.8rem; /* Réduction de la taille d'entrée */
+        padding: 0.4rem 0.6rem;
+    }
+
+    .update-button {
+        font-size: 0.8rem; /* Réduction de la taille du bouton */
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+
+
+
+
+
+.change-password-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.password-info {
+    max-width: 300px;
+}
+
+.password-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.password-info p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.password-fields {
+    flex: 1;
+    max-width: 400px;
+}
+
+.field-group {
+    margin-bottom: 1.5rem;
+}
+
+.field-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.field-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.field-group small {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.actions-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -10px;
+}
+
+.btn-primary {
+    background-color: #6c63ff;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background-color: #5a54d6;
+}
+
+.add-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #0D72FF;
+    margin-top: 21px;
+}
+
+.add-info i {
+    font-size: 1rem;
+    color: #0D72FF;
+}
+
+.forgot-password-link {
+    color: #0D72FF;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .change-password-section {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .password-fields {
+        max-width: 100%;
+    }
+
+    .actions-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
+.notification-settings {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.settings-info {
+    max-width: 300px;
+}
+
+.settings-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.settings-info p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.settings-options {
+    flex: 1;
+    max-width: 600px;
+}
+
+.option {
+    margin-bottom: 1.5rem;
+}
+
+.option label {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.option label input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.option p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.option a {
+    color: #6c63ff;
+    text-decoration: none;
+}
+
+.option a:hover {
+    text-decoration: underline;
+}
+
+.btn-primary2 {
+    display: inline-block;
+    background-color: #6c63ff;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.btn-primary2:hover {
+    background-color: #5a54d6;
+}
+
+.close-account {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    color: #dc3545;
+    font-size: 0.9rem;
+}
+
+.close-account-link {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.close-account-link:hover {
+    text-decoration: underline;
+}
+
+.close-account i {
+    font-size: 1rem;
+    color: #dc3545;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .notification-settings {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .settings-options {
+        max-width: 100%;
+    }
+
+    .nav-bar {
+        margin-top: -60px;
+    }
+    
+
+}
+
+
+.validation-part {
+    display: flex;
+    justify-content: end;
+    margin-top: 53px;
+    margin-right: 12px;
+    margin-bottom: 20px;
+}
+
+.validation-part button {
+    font-weight: 600;
+}
+
+
+
+
+
+.custom-alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.custom-alert ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.custom-alert li::before {
+    content: "⚠️ "; /* Icon for each error */
+    margin-right: 5px;
+}
+
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}

@@ -1,0 +1,418 @@
+.profile-content {
+    margin-top: 54px;
+    margin-left: 15px;
+    width: 100%;
+}
+
+.content-section {
+    display: none;
+    
+}
+
+.content-section.active {
+    display: block;
+}
+
+
+.text-18 {
+    font-size: 18px;
+}
+
+.text-15 {
+    font-size: 15px;
+}
+
+.text-14 {
+    font-size: 14px;
+}
+
+.text-12 {
+    font-size: 12px;
+}
+
+.w-100 {
+    width: 100%;
+}
+.mt-6 {
+    margin-top: 6px;
+}
+.mt-18 {
+    margin-top: 18px;
+}
+.subtitle {
+    color: #515B6F;
+}
+
+
+
+
+.profile-picture-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.profile-infos {
+    max-width: 300px;
+}
+
+.profile-infos h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-infos p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.profile-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 96px;
+}
+
+.current-picture {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+.current-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-area {
+    border: 2px dashed #6c63ff;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    max-width: 350px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c63ff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.upload-label img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.upload-label span {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-label p {
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.upload-input {
+    display: none;
+    cursor: pointer;
+}
+
+
+/* Media Query pour les écrans <= 1170px */
+@media screen and (max-width: 900px) {
+    .profile-picture-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .profile-upload {
+        margin-left: 0;
+    }
+
+    .upload-area {
+        max-width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .current-picture {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-infos {
+        max-width: 100%;
+    }
+
+    .profile-infos p {
+        font-size: 0.8rem;
+    }
+
+    .upload-label {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+.unique-form-container {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.unique-form-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#unique-personal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.unique-form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.unique-form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.unique-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.unique-label span {
+    color: #ff6b6b;
+}
+
+input,
+select {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 4px rgba(108, 99, 255, 0.2);
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(32%) sepia(54%) saturate(723%) hue-rotate(226deg) brightness(95%) contrast(86%);
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+    .unique-form-container {
+        padding: 15px;
+    }
+
+    .unique-form-title {
+        font-size: 1rem;
+    }
+
+    .unique-form-row {
+        flex-direction: column; /* Les champs s'affichent en colonne */
+        gap: 1rem;
+    }
+
+    .unique-form-group {
+        width: 100%; /* S'assurer que chaque champ occupe toute la largeur */
+    }
+
+    input,
+    select {
+        font-size: 0.95rem; /* Réduire légèrement la taille des champs */
+        padding: 0.4rem; /* Réduire les marges internes pour un meilleur rendu */
+    }
+}
+
+/* Styles pour les écrans très petits (téléphones, <480px) */
+@media (max-width: 480px) {
+    .unique-form-container {
+        padding: 10px;
+    }
+
+    .unique-form-title {
+        font-size: 0.8rem;
+    }
+
+    input,
+    select {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+    }
+}
+
+
+
+
+/* Container principal */
+.job-search-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+}
+
+/* Titre et description */
+.job-search-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.job-search-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Options */
+.job-search-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-search-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.job-search-option input[type="radio"] {
+    accent-color: #6c63ff; /* Couleur personnalisée pour les boutons radio */
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+}
+
+.job-search-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-search-option-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.job-search-option-description {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Styles spécifiques pour les petits écrans */
+@media (max-width: 768px) {
+    /* Ajuster les marges pour économiser de l'espace */
+    .job-search-container {
+        margin: 10px;
+    }
+
+    /* Réduire les tailles des textes */
+    .job-search-title {
+        font-size: 1rem;
+    }
+
+    .job-search-description {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    /* Espacement plus compact entre les options */
+    .job-search-options {
+        gap: 10px;
+    }
+
+    /* Réduire la taille des titres et descriptions des options */
+    .job-search-option-title {
+        font-size: 0.9rem;
+    }
+
+    .job-search-option-description {
+        font-size: 0.75rem;
+    }
+
+    /* Boutons radio plus petits */
+    .job-search-option input[type="radio"] {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+
+.custom-alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.custom-alert ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.custom-alert li::before {
+    content: "⚠️ "; /* Icon for each error */
+    margin-right: 5px;
+}
+
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}

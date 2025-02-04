@@ -1,0 +1,294 @@
+@extends('layouts.company')
+
+@section('title', 'my offers')
+
+@section('page-title', 'Mis solicitudes')
+
+@section('content')
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ asset('css/Company/my-offers.css') }}">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+        <style>
+
+            div.dataTables_info {
+                display: none;
+            }
+            
+            /* Conteneur global */
+            div.dataTables_length {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: 'Poppins', sans-serif;
+                font-size: 14px;
+                color: #333;
+                margin-top: 15px
+            }
+
+            /* Texte associé */
+            div.dataTables_length label {
+                margin: 0;
+                font-weight: 500;
+                color: #7C8493;
+            }
+
+            /* Le sélecteur */
+            div.dataTables_length select {
+                padding: 8px 12px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+                background-color: #f9f9f9;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #333;
+            }
+
+            /* Sélecteur au focus */
+            div.dataTables_length select:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+            /* Sélecteur au survol */
+            div.dataTables_length select:hover {
+                background-color: #f1f1f1;
+            }
+
+
+
+                /* Conteneur de pagination */
+                div.dataTables_paginate {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 10px;
+                    font-family: 'Poppins', sans-serif;
+                    margin-top: 15px;
+                }
+
+                /* Boutons de pagination */
+                div.dataTables_paginate .paginate_button {
+                    padding: 5px 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                    color: #333;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                /* Boutons au survol */
+                div.dataTables_paginate .paginate_button:hover {
+                    background-color: #007bff;
+                    color: #fff;
+                    border-color: #007bff;
+                }
+
+                /* Bouton actif */
+                div.dataTables_paginate .paginate_button.current {
+                    background-color: #007bff;
+                    color: #fff;
+                    border-color: #007bff;
+                    font-weight: bold;
+                }
+
+                /* Flèches */
+                div.dataTables_paginate .paginate_button:before {
+                    font-size: 16px;
+                }
+
+                /* Désactiver les boutons */
+                div.dataTables_paginate .paginate_button.disabled {
+                    background-color: #e9ecef;
+                    color: #6c757d;
+                    cursor: not-allowed;
+                }
+            
+            
+
+
+                 /* Conteneur principal */
+    .dataTables_wrapper {
+        width: 100%; /* La table occupe toute la largeur de son conteneur */
+        max-width: 1400px; /* Largeur maximale */
+        margin: 0 auto; /* Centrer la table horizontalement */
+        overflow-x: auto; /* Activer le défilement horizontal si nécessaire */
+    }
+
+    /* Table responsive */
+    table.dataTable {
+        width: 100%; /* La table occupe toute la largeur du conteneur */
+        max-width: 100%; /* Empêche la table de dépasser les limites */
+        table-layout: auto; /* Ajuste automatiquement la largeur des colonnes */
+        border-collapse: collapse; /* Fusionne les bordures pour un meilleur rendu */
+    }
+
+    /* Colonnes de la table */
+    table.dataTable th,
+    table.dataTable td {
+        text-align: left;
+        padding: 8px;
+        white-space: nowrap; /* Empêche le texte de déborder */
+    }
+        </style>
+
+        
+    </head>
+    <body>
+        
+        <div class="conta">
+            <header class="mpage-header">
+
+                <div class="" style=" display: flex; justify-content: space-between;">
+                    <div class="">
+                        <h1>Buenos días, {{Auth::user()->name}}</h1>
+                        <p class="subtitle">Aquí puede consultar todas las solicitudes enviadas desde 19 de julio - 25 de julio.</p>
+                    </div>
+                    <div style="height: 51px; display: flex; justify-content: center; align-items: center; cursor: pointer;" class="date-picker">Jul 19 - Jul 25</div>
+                </div>
+                
+
+
+                <div class="actions">
+                    <div class=""></div>
+                    <div class="header-buttons">
+                        <button class="btn primary">Nueva solicitud</button>
+                        {{-- <button class="btn secondary">Filtros</button> --}}
+                    </div>
+                </div>
+            </header>
+    
+            <main>
+                <div class="dataTables_wrapper">
+                    <table id="jobTable" class="display nowrap">
+                        <thead>
+                            <tr>
+                                <th>Roles</th>
+                                <th>Estado</th>
+                                <th>Fecha de envío</th>
+                                <th>Fecha de publ.</th>
+                                <th>Tipo de empleo</th>
+                                <th>Candidatos</th>
+                                <th>Puestos cubiertos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Le contenu dynamique sera généré par JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+    
+                {{-- <div class="pagination">
+                    <span>Vista</span>
+                    <select>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                    <span>Solicitantes por página</span>
+                    <div class="page-controls">
+                        <button class="prev">←</button>
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button class="next">→</button>
+                    </div>
+                </div> --}}
+            </main>
+        </div>
+
+        
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+        
+
+
+
+
+        <script>
+            $(document).ready(function () {
+                const jobData = [
+                    {
+                        role: 'Social Media Assistant',
+                        status: 'published',
+                        submitDate: '20 May 2020',
+                        publishDate: '24 May 2020',
+                        employmentType: 'Tiempo completo',
+                        candidates: 19,
+                        positions: { filled: 4, total: 11 }
+                    },
+                    {
+                        role: 'Senior Designer',
+                        status: 'published',
+                        submitDate: '16 May 2020',
+                        publishDate: '24 May 2020',
+                        employmentType: 'Tiempo completo',
+                        candidates: 5,
+                        positions: { filled: 0, total: 20 }
+                    },
+                    // ... autres données ...
+                ];
+
+                function getBadgeClass(status) {
+                    switch (status) {
+                        case 'published': return '<span class="badge published">Publicada</span>';
+                        case 'review': return '<span class="badge review">Revisión</span>';
+                        case 'closed': return '<span class="badge closed">Cerrada</span>';
+                        default: return status;
+                    }
+                }
+
+                $('#jobTable').DataTable({
+                    data: jobData,
+                    columns: [
+                        { data: 'role', title: 'Role' },
+                        {
+                            data: 'status',
+                            title: 'Estado',
+                            render: function (data) {
+                                return getBadgeClass(data);
+                            }
+                        },
+                        { data: 'submitDate', title: 'Fecha de envío' },
+                        { data: 'publishDate', title: 'Fecha de publ.' },
+                        { data: 'employmentType', title: 'Tipo de empleo' },
+                        { data: 'candidates', title: 'Candidatos' },
+                        {
+                            data: 'positions',
+                            title: 'Puestos cubiertos',
+                            render: function (data) {
+                                return `${data.filled} / ${data.total}`;
+                            }
+                        }
+                    ],
+                    dom: '<"top"f>rt<"bottom"ilp><"clear">',
+                    scrollX: true, // Active le défilement horizontal
+                    language: {
+                        paginate: {
+                            previous: "&#9664;", // Flèche gauche
+                            next: "&#9654;" // Flèche droite
+                        },
+                        lengthMenu: "Vista _MENU_ Solicitantes por página"
+                    }
+                });
+
+
+            });
+
+        </script>
+    </body>
+    </html>
+@endsection

@@ -1,0 +1,833 @@
+:root {
+  --primary-blue: #0066ff;
+  --text-gray: #666;
+  --bg-light: #fff;
+  --white: #fff;
+  --sidebar-width: 250px;
+  --header-height: 80px;
+}
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  body {
+    background-color: var(--bg-light);
+  }
+  
+  .container {
+    display: flex;
+    min-height: 100%;
+  }
+  
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background-color: var(--white);
+    padding: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 3000;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding-right: 10px;
+}
+
+
+.logo img {
+  height: 32px;
+  width: auto;
+}
+
+.nav-menu {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  margin-bottom: 12px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  color: var(--text-gray);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background-color: var(--bg-light);
+}
+
+.nav-link.active {
+  background-color: var(--bg-light);
+  color: var(--primary-blue);
+}
+
+.nav-link i {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+
+/* Main Content Styles */
+.main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+  
+
+.header {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--header-height);
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: left 0.3s ease;
+}
+
+
+
+
+
+/* Style de la section droite du header */
+.header .right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.web-link {
+  margin-right: 10px;
+}
+
+.fa-bell {
+  font-size: 30px;
+  color: #25324B;
+  cursor: pointer;
+}
+
+/* Titre de la page */
+.page-title-c {
+  font-size: 30px  !important;
+  color: #0D72FF !important;
+}
+
+/* Lien Web */
+.web-link {
+  color: #4640DE;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #CCCCF5;
+  padding: 12px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.web-link:hover {
+  background-color: #4640DE;
+  color: white;
+  border-color: #4640DE;
+}
+  
+  /* Profile Section */
+  /* .profile-section {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+  } */
+
+  .profile-section {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+}
+  
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+  
+.profile-infor {
+  flex: 1;
+  overflow: hidden;
+}
+  
+
+
+.profile-name {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-email {
+  font-size: 12px;
+  color: var(--text-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+  .logout-button {
+    border: none;
+    cursor: pointer;
+    background-color: #FFCCCC;  
+    color: red;
+  }
+  .logout-button:hover {
+    background-color: #ffccccd4; /* Rouge plus foncé pour l'effet hover */
+ }
+ .clicked {
+  background-color: #FFCCCC !important;  
+  color: red !important;
+}
+
+
+
+.toggle-sidebar {
+  display: none;
+  background: var(--primary-blue);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 3001;
+}
+
+.close-sidebar-btn {
+  display: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.close-sidebar-btn:hover {
+  background-color: rgba(48, 100, 254, 0.1);
+}
+
+.fa-xmark {  
+  font-size: 15px;
+  position: absolute;
+  right: 0;
+  top: -500px;
+  background: var(--primary-blue);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+
+
+
+  .logo div i {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #3064FE;
+  }
+
+  
+  
+  @media screen and (max-width: 1170px) {
+    
+    .page-title-c {
+      font-size: 20px !important;
+      margin-left: 45px;
+    }
+
+    .fa-xmark {
+      top: 5px;
+    }
+    .close-sidebar-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar.closed {
+        transform: translateX(-100%);
+    }
+
+    .toggle-sidebar {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+    }
+
+    .sidebar .logo {
+        padding-right: 40px; /* Espace pour le bouton X */
+    }
+
+    /* Ajuster la taille du logo en mode mobile */
+    .sidebar .logo img {
+        height: 28px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .header {
+        left: 0;
+    }
+
+  .profile-section {
+      bottom: 66px;
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  :root {
+      --header-height: 60px;
+  }
+
+  .header {
+      padding: 0 15px;
+  }
+
+  .page-title-c {
+      font-size: 20px !important;
+      margin-top: 16px;
+  }
+
+  .web-link {
+      padding: 8px;
+      font-size: 13px;
+  }
+
+  .main-content {
+      padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header .right-section {
+      gap: 8px;
+  }
+
+  .web-link {
+      padding: 6px;
+      font-size: 11px;
+  }
+
+  .fa-bell {
+      font-size: 18px;
+  }
+
+  .page-title-c {
+      font-size: 18px !important;
+  }
+
+  .profile-section {
+      padding: 8px;
+  }
+
+  .profile-picture {
+      width: 32px;
+      height: 32px;
+  }
+
+  /* .profile-infor {
+      display: none;
+  } */
+
+
+  .close-sidebar-btn {
+    padding: 6px;
+  }
+
+  .close-sidebar-btn i {
+      font-size: 20px;
+  }
+
+  .sidebar .logo {
+      padding-right: 35px;
+  }
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+
+
+
+.notifications-container.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.mark-all {
+  color: #4F46E5;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.notifications-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+  background-color: #f9fafb;
+}
+
+.profile-pic-notif {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.notification-time {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.status-badge-app {
+  /* background: #FEF3C7; */
+  /* color: #92400E; */
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.no-notifications {
+  padding: 16px;
+  text-align: center;
+  color: #6b7280;
+}
+
+
+.notification-item {
+  position: relative;
+}
+
+.view-details-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.view-details-btn i {
+  font-size: 12px;
+  color: #0052cc;
+}
+
+.view-details-btn:hover {
+  /* background-color: #4338CA; */
+}
+
+.notification-item:hover .view-details-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajuster la position du badge New pour ne pas chevaucher le bouton */
+.status-badge-app {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles de base */
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.notifications-container {
+  width: 400px;
+  max-width: 95vw; /* Empêche le débordement sur les petits écrans */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: absolute;
+  right: -21px;
+  top: 100%;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  margin: 0 auto;
+}
+
+
+
+
+
+
+/* Media queries pour la responsivité */
+@media screen and (max-width: 768px) {
+  .notifications-container {
+      width: 100vw;
+      max-width: 100vw;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 12px 12px 0 0;
+      transform: translateY(100%);
+  }
+
+  .notifications-container.show {
+      transform: translateY(0);
+  }
+
+  .notifications-list {
+      max-height: 60vh; /* Limite la hauteur sur mobile */
+  }
+
+  .notification-item {
+      padding: 12px; /* Réduit le padding sur mobile */
+  }
+
+  .notification-text {
+      font-size: 13px; /* Texte légèrement plus petit sur mobile */
+  }
+
+  .view-details-btn {
+      opacity: 1; /* Toujours visible sur mobile */
+      transform: none;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 4px 8px;
+  }
+
+  /* .status-badge {
+      top: 8px;
+      right: 8px;
+  } */
+}
+
+@media screen and (max-width: 480px) {
+  .notification-content {
+      padding-right: 30px; /* Espace pour le bouton */
+  }
+
+  .profile-pic-notif {
+      width: 32px; /* Image plus petite sur très petits écrans */
+      height: 32px;
+  }
+
+  .notifications-header {
+      padding: 12px;
+  }
+
+  .notification-time {
+      font-size: 11px;
+  }
+}
+
+/* Styles existants inchangés */
+.notifications-container.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+.view-details-form {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+}
+
+
+
+
+
+.notification-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+  background-color: #f3f4f6;
+}
+
+/* Animation au clic */
+.notification-item:active {
+  background-color: #e5e7eb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+} */
+
+.status-app-Evaluacion {
+  background-color: #fff;
+  color: #FFBC43;
+  border: 1px solid #FFBC43;
+}
+
+.status-app-Confirmada {
+  background-color: #fff;
+  color: #56CDAD;
+  border: 1px solid #56CDAD;
+}
+
+.status-app-Entrevista {
+  background-color: #fff;
+  color: #4640DE;
+  border: 1px solid #4640DE;
+}
+
+.status-app-Seleccionado {
+  background-color: #fff;
+  color: #544a4a;
+  border: 1px solid #544a4a;
+}
+
+.status-app-En {
+  background-color: #fff;
+  color: #37B7EE;
+  border: 1px solid #37B7EE;
+}
+
+.status-app-Descartado {
+  background-color: #fff;
+  color: #EB5D4A;
+  border: 1px solid #EB5D4A;
+}
